@@ -1,0 +1,21 @@
+name: huawei_location
+description: Huawei HMS Flutter Location Plugin
+version: 4.0.4
+author:
+homepage: https://www.huawei.com
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: com.huawei.hms.flutter.location
+    pluginClass: LocationPlugin

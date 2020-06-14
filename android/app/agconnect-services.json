@@ -1,0 +1,12 @@
+{
+	"client":{
+		"cp_id":"890852200000000072",
+		"product_id":"736430079244501650",
+		"client_id":"381051446679831616",
+		"client_secret":"707EFADAC4D7092BE0BFD4E6A34C79B504765B8C26A6775941F4EC2A27892BF6",
+		"app_id":"102371967",
+		"package_name":"com.eric.newsapp",
+		"api_key":"CV8G6zYnqCipZgGFn6gey38qUWSrbljgtFqpBakZosWTwktVjBqREOkbSNVq7bUBNtfqufTIFM6lBZvmy+jr0kJe+8cI"
+	},
+	"configuration_version":"1.0"
+}
