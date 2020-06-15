@@ -10,8 +10,6 @@ class TopHeadlinesServiceImpl implements TopHeadlinesService {
   @override
   Future<List<Article>> getTopHeadlines(String countryCode) async {
     if (_headlinesCache == null) {
-      //request from api
-      print("getting headlines from web");
       final results = await http.get(CommonString.headline_url +
           CommonString.query +
           CommonString.country_query +
@@ -31,7 +29,6 @@ class TopHeadlinesServiceImpl implements TopHeadlinesService {
   @override
   Future<List<Article>> changeHeadlinesLanguage(String countryCode) async {
 
-      print("getting headlines from web");
       final results = await http.get(CommonString.headline_url +
           CommonString.query +
           CommonString.country_query +
@@ -46,7 +43,6 @@ class TopHeadlinesServiceImpl implements TopHeadlinesService {
 
   List<Article> _createArticleListFromRawMap(jsonObject) {
     final articles = jsonObject['articles'];
-//    print("articles  $articles");
     List<Article> list = [];
 
     for (var article in articles) {
@@ -58,7 +54,6 @@ class TopHeadlinesServiceImpl implements TopHeadlinesService {
           publishedAt: article['publishedAt'],
           urlToImage: article['urlToImage']));
     }
-//    print(list);
     return list;
   }
 }

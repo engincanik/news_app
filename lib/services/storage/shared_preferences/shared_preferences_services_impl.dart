@@ -7,13 +7,13 @@ class SharedPreferencesServicesImpl implements SharedPreferencesServices {
   @override
   Future<String> getCountryCode() async {
     SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
-    return _sharedPreferences.getString(CommonString.sf_country_code);
+    return _sharedPreferences.getString(CommonString.sp_country_code);
   }
 
   @override
   Future<void> saveCountryCode(String countryCode) async {
     SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
-    _sharedPreferences.setString(CommonString.sf_country_code, countryCode.toLowerCase());
+    _sharedPreferences.setString(CommonString.sp_country_code, countryCode.toLowerCase());
   }
 
 }

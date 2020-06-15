@@ -13,6 +13,5 @@ class PermissionServicesImpl implements PermissionServices {
   Future<bool> requestLocationPermission() async {
     return _permissionHandler
         .requestLocationPermission();
-//        .timeout(Duration(milliseconds: 2000), onTimeout: () => null);
   }
 }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/business_logic/view_models/headlines_screen_viewmodel.dart';
+import 'package:newsapp/util/common_string.dart';
 
 class HeadlinesScreenLanguageIcon extends StatelessWidget {
   final HeadlinesScreenViewModel model;
@@ -13,7 +14,6 @@ class HeadlinesScreenLanguageIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("MyLanguageIcon build");
     return IconButton(
       icon: Icon(
         Icons.language,
@@ -31,7 +31,6 @@ class HeadlinesScreenLanguageIcon extends StatelessWidget {
   }
 
   Widget _buildBottomSheet(BuildContext context) {
-    print("BuildBottomSheet");
     return Container(
         height: 300,
         child: Stack(children: <Widget>[
@@ -55,7 +54,7 @@ class HeadlinesScreenLanguageIcon extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                   child: Text(
-                    "Country",
+                    CommonString.language_bottom_sheet_header,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
@@ -92,7 +91,6 @@ class HeadlinesScreenLanguageIcon extends StatelessWidget {
                                     textAlign: TextAlign.center,
                                   ),
                             onTap: () {
-                              print("language tapped");
                               model.changeLanguage(index);
                               model.setCountryIndex(index);
                               Navigator.pop(context);

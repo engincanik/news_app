@@ -25,12 +25,10 @@ class _NewsAppState extends State<NewsApp> {
   void initApp() async {
     final isPermitted = await _permissionServices.requestLocationPermission();
     if(isPermitted == null) {
-      print("initApp(): isPermitted == null");
       _sharedPreferencesServices.saveCountryCode(CommonString.defaultCountry);}
     if(isPermitted) {
       final hwLocation = await _locationService.getHWLocation();
       if(hwLocation != null) {
-        print("Country Code: ${hwLocation.countryCode}");
         _sharedPreferencesServices.saveCountryCode(hwLocation.countryCode);
       }
     } else {

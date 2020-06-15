@@ -1,10 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:newsapp/business_logic/models/article.dart';
-import 'file:///D:/Eric/Flutter/news_app/lib/util/common_string.dart';
 import 'package:newsapp/services/service_locator.dart';
 import 'package:newsapp/services/storage/shared_preferences/shared_preferences_services.dart';
 import 'package:newsapp/services/top_headlines/top_headlines_services.dart';
+import 'package:newsapp/util/common_string.dart';
 
 class HeadlinesScreenViewModel extends ChangeNotifier {
   final TopHeadlinesService _topHeadlinesService =
@@ -35,7 +35,7 @@ class HeadlinesScreenViewModel extends ChangeNotifier {
     _setIsLoading(true);
     final _countryCode = await sharedPreferencesServices
         .getCountryCode()
-        .timeout(Duration(milliseconds: 2000), onTimeout: () => "hk");
+        .timeout(Duration(milliseconds: 2000), onTimeout: () => CommonString.defaultCountry);
     _headlines = await _topHeadlinesService
         .getTopHeadlines(_countryCode)
         .timeout(Duration(milliseconds: 2000), onTimeout: () => null);
@@ -43,7 +43,6 @@ class HeadlinesScreenViewModel extends ChangeNotifier {
   }
 
   void changeLanguage(int index) async {
-    print("changeLanguage");
     _setIsLoading(true);
     _headlines = await _topHeadlinesService
         .changeHeadlinesLanguage((_countries.values.toList())[index])

@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:newsapp/business_logic/view_models/headlines_screen_viewmodel.dart';
-import 'file:///D:/Eric/Flutter/news_app/lib/util/common_string.dart';
 import 'package:newsapp/services/service_locator.dart';
 import 'package:newsapp/ui/views/headlines_detail_screen.dart';
 import 'package:newsapp/ui/widgets/headlines_screen_language_icon.dart';
+import 'package:newsapp/util/common_string.dart';
 import 'package:provider/provider.dart';
 
 class HeadlinesScreen extends StatefulWidget {
@@ -24,7 +24,6 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
 
   @override
   void dispose() {
-    print("dispose called");
     model.dispose();
     super.dispose();
   }
@@ -42,7 +41,7 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("☀ News", style: TextStyle(fontSize: 24.0)),
+          title: Text(CommonString.app_bar_title, style: TextStyle(fontSize: 24.0)),
           actions: <Widget>[
             HeadlinesScreenLanguageIcon(model),
           ],
@@ -72,7 +71,7 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
                     Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text(
-                          "焦點",
+                          CommonString.headline,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.blue,

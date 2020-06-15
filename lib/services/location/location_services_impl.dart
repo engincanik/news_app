@@ -11,7 +11,6 @@ class LocationServicesImpl implements LocationService {
 
   @override
   Future<HWLocation> getHWLocation() async {
-    print("getHWLocation");
     if (await _permissionServices.hasLocationPermission()) {
       FusedLocationProviderClient locationService =
           FusedLocationProviderClient();
@@ -19,7 +18,6 @@ class LocationServicesImpl implements LocationService {
       locationRequest.needAddress = true;
       final hwLocation = locationService
           .getLastLocationWithAddress(locationRequest);
-//          .timeout(Duration(milliseconds: 2000), onTimeout: () => null);
       return hwLocation;
     }
   }

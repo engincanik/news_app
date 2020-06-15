@@ -7,7 +7,11 @@ class CommonString {
   static final String apiKey_query = "apiKey=";
   static final String apiKey = "08f3b1d041ac4c4cab5b856e3e0fe7e2";
   static final String defaultCountry = "hk";
-  static final String sf_country_code = "sf_country_code";
+  static final String sp_country_code = "sf_country_code";
+  static final String language_bottom_sheet_header = "Country";
+  static final String app_bar_title = "World News";
+  static final String detail_app_bar_title = "Details";
+  static final String headline = "HEADLINE";
   static final String get_top_headlines_error_message = "Ooops! Seems there is a connection issue.\n\nPlease try again later.";
   static final String change_top_headlines_location_error_message = "Failed to change location. Please check your network connection.";
   static final Map<String, String> countries = {

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/business_logic/models/article.dart';
+import 'package:newsapp/util/common_string.dart';
 
 class HeadlinesDetailScreen extends StatelessWidget {
   Article article;
@@ -16,7 +17,7 @@ class HeadlinesDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("👀", style: TextStyle(fontSize: 28.0)),
+        title: Text(CommonString.detail_app_bar_title, style: TextStyle(fontSize: 28.0)),
       ),
       body: _buildBody(context),
     );
@@ -34,7 +35,7 @@ class HeadlinesDetailScreen extends StatelessWidget {
                 Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "焦點",
+                      CommonString.headline,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.blue,
