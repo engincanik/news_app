@@ -15,7 +15,7 @@ class HeadlinesScreen extends StatefulWidget {
 
 class _HeadlinesScreenState extends State<HeadlinesScreen> {
   HeadlinesScreenViewModel model = serviceLocator<HeadlinesScreenViewModel>();
-
+  
   @override
   void initState() {
     model.loadData();
@@ -33,8 +33,10 @@ class _HeadlinesScreenState extends State<HeadlinesScreen> {
     return ChangeNotifierProvider<HeadlinesScreenViewModel>(
       create: (context) => model,
       child: Consumer<HeadlinesScreenViewModel>(
-          builder: (context, model, child) => _buildScaffold(context)),
-    );
+          builder: (context, model, child) {
+            return _buildScaffold(context);
+          }
+    ));
   }
 
   Widget _buildScaffold(BuildContext context) {

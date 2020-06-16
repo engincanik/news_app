@@ -9,7 +9,7 @@ import 'package:newsapp/util/common_string.dart';
 class HeadlinesScreenViewModel extends ChangeNotifier {
   final TopHeadlinesService _topHeadlinesService =
       serviceLocator<TopHeadlinesService>();
-  final SharedPreferencesServices sharedPreferencesServices =
+  final SharedPreferencesServices _sharedPreferencesServices =
       serviceLocator<SharedPreferencesServices>();
 
   List<Article> _headlines;
@@ -33,7 +33,7 @@ class HeadlinesScreenViewModel extends ChangeNotifier {
 
   void loadData() async {
     _setIsLoading(true);
-    final _countryCode = await sharedPreferencesServices
+    final _countryCode = await _sharedPreferencesServices
         .getCountryCode()
         .timeout(Duration(milliseconds: 2000), onTimeout: () => CommonString.defaultCountry);
     _headlines = await _topHeadlinesService

@@ -22,7 +22,7 @@ class _NewsAppState extends State<NewsApp> {
   LocationService _locationService = serviceLocator<LocationService>();
   SharedPreferencesServices _sharedPreferencesServices = serviceLocator<SharedPreferencesServices>();
 
-  void initApp() async {
+  void _initApp() async {
     final isPermitted = await _permissionServices.requestLocationPermission();
     if(isPermitted == null) {
       _sharedPreferencesServices.saveCountryCode(CommonString.defaultCountry);}
@@ -38,7 +38,7 @@ class _NewsAppState extends State<NewsApp> {
 
   @override
   void initState() {
-    initApp();
+    _initApp();
     super.initState();
   }
 
@@ -50,7 +50,7 @@ class _NewsAppState extends State<NewsApp> {
       theme: ThemeData(
         primarySwatch: Colors.green
       ),
-      home: HeadlinesScreen(),
+      home:  HeadlinesScreen()
     );
   }
 }
