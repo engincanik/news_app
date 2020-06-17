@@ -17,29 +17,45 @@ class NewsApp extends StatefulWidget {
 }
 
 class _NewsAppState extends State<NewsApp> {
+  bool _finishPermission = false;
 
   PermissionServices _permissionServices = serviceLocator<PermissionServices>();
   LocationService _locationService = serviceLocator<LocationService>();
   SharedPreferencesServices _sharedPreferencesServices = serviceLocator<SharedPreferencesServices>();
 
-  void _initApp() async {
+  Future<void> _initApp() async {
     final isPermitted = await _permissionServices.requestLocationPermission();
     if(isPermitted == null) {
-      _sharedPreferencesServices.saveCountryCode(CommonString.defaultCountry);}
+      await _sharedPreferencesServices.saveCountryCode(CommonString.defaultCountry);}
     if(isPermitted) {
       final hwLocation = await _locationService.getHWLocation();
       if(hwLocation != null) {
-        _sharedPreferencesServices.saveCountryCode(hwLocation.countryCode);
+        await _sharedPreferencesServices.saveCountryCode(hwLocation.countryCode);
       }
     } else {
-      _sharedPreferencesServices.saveCountryCode(CommonString.defaultCountry);
+      await _sharedPreferencesServices.saveCountryCode(CommonString.defaultCountry);
     }
+  }
+
+  void _onFinishPermission() {
+    setState(() {
+      _finishPermission = true;
+    });
   }
 
   @override
   void initState() {
-    _initApp();
+    _initApp().whenComplete(() => _onFinishPermission());
     super.initState();
+  }
+  
+  Widget _buildLaunchScreen(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(CommonString.app_bar_title,style:TextStyle(fontSize: 24.0)), centerTitle: true,),
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 
   @override
@@ -50,7 +66,7 @@ class _NewsAppState extends State<NewsApp> {
       theme: ThemeData(
         primarySwatch: Colors.green
       ),
-      home:  HeadlinesScreen()
+      home: _finishPermission ? HeadlinesScreen() : _buildLaunchScreen(context)
     );
   }
 }

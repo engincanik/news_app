@@ -31,6 +31,7 @@ class HeadlinesScreenViewModel extends ChangeNotifier {
     return _countryIndex;
   }
 
+
   void loadData() async {
     _setIsLoading(true);
     final _countryCode = await _sharedPreferencesServices
